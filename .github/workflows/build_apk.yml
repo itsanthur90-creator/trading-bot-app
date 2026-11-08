@@ -28,13 +28,15 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get --directory=.
+        run: flutter pub get
+        working-directory: ./trading-bot-app
 
       - name: Build APK
-        run: flutter build apk --release --target-platform=android-arm64
+        run: flutter build apk --release
+        working-directory: ./trading-bot-app
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: trading-bot-app/build/app/outputs/flutter-apk/app-release.apk
