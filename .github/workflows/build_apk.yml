@@ -28,10 +28,10 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get
+        run: flutter pub get --directory=.
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release --target-platform=android-arm64
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
