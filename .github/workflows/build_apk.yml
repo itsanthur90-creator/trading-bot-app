@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./trading-bot-app
 
     steps:
       - name: Checkout repository
@@ -29,15 +32,12 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
-        working-directory: .
 
       - name: Build APK
         run: flutter build apk --release
-        working-directory: .
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
-          
+          path: trading-bot-app/build/app/outputs/flutter-apk/app-release.apk
